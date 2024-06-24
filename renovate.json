@@ -10,12 +10,5 @@
         "#\\srenovate:\\sdatasource=(?<datasource>.*?) depName=(?<depName>.*?)( versioning=(?<versioning>.*?))?( extractVersion=(?<extractVersion>.*?))?\\s(ENV|ARG) .*?_VERSION=(?<currentValue>.*)\\s"
       ]
     }
-  ],
-  "packageRules": [
-    {
-      "matchDatasources": ["docker"],
-      "matchManagers": ["regex"],
-      "automerge": true
-    }
   ]
 }
