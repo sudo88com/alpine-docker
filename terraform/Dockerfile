@@ -12,7 +12,7 @@ ARG TERRAFORM_VERSION=1.6.6
 # renovate: datasource=github-releases depName=gruntwork-io/terragrunt
 ARG TERRAGRUNT_VERSION=0.59.5
 # renovate: datasource=github-releases depName=terraform-docs/terraform-docs
-ARG TERRAFORMDOCS_VERSION=0.17.0
+ARG TERRAFORMDOCS_VERSION=0.18.0
 
 # Set up architecture-specific variables
 RUN ARCH=$(uname -m) && \
