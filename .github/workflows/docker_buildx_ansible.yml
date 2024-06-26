@@ -46,5 +46,7 @@ jobs:
             --tag ghcr.io/${{ github.repository }}/ansible:${{ env.ANSIBLE_VERSION }} \
             --tag ghcr.io/${{ github.repository }}/ansible:alpine${{ env.ALPINE_VERSION }} \
             --tag ghcr.io/${{ github.repository }}/ansible:latest \
+            --cache-from type=gha \
+            --cache-to type=gha,mode=max \
             --push \
             .
