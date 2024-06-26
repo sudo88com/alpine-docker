@@ -33,17 +33,17 @@ jobs:
           ALPINE_VERSION=$(grep -oP '^ARG ALPINE_VERSION=\K.*' Dockerfile)
           echo "ALPINE_VERSION=${ALPINE_VERSION}" >> $GITHUB_ENV
           echo "ALPINE_VERSION=${ALPINE_VERSION}"
-          DOTENV-LINTER_VERSION=$(grep -oP "^ARG DOTENV-LINTER_VERSION=\K.*" Dockerfile)
-          echo "DOTENV-LINTER_VERSION=${DOTENV-LINTER_VERSION}" >> $GITHUB_ENV
-          echo "DOTENV-LINTER_VERSION=${DOTENV-LINTER_VERSION}"
+          DOTENV_LINTER_VERSION=$(grep -oP "^ARG DOTENV_LINTER_VERSION=\K.*" Dockerfile)
+          echo "DOTENV_LINTER_VERSION=${DOTENV_LINTER_VERSION}" >> $GITHUB_ENV
+          echo "DOTENV_LINTER_VERSION=${DOTENV_LINTER_VERSION}"
 
       - name: Build and push Docker image
         run: |
           cd dotenv-linter
           docker buildx build \
             --platform linux/amd64,linux/arm64 \
-            --tag ghcr.io/${{ github.repository }}/dotenv-linter:${{ env.DOTENV-LINTER_VERSION }}-alpine${{ env.ALPINE_VERSION }} \
-            --tag ghcr.io/${{ github.repository }}/dotenv-linter:${{ env.DOTENV-LINTER_VERSION }} \
+            --tag ghcr.io/${{ github.repository }}/dotenv-linter:${{ env.DOTENV_LINTER_VERSION }}-alpine${{ env.ALPINE_VERSION }} \
+            --tag ghcr.io/${{ github.repository }}/dotenv-linter:${{ env.DOTENV_LINTER_VERSION }} \
             --tag ghcr.io/${{ github.repository }}/dotenv-linter:alpine${{ env.ALPINE_VERSION }} \
             --tag ghcr.io/${{ github.repository }}/dotenv-linter:latest \
             --push \
