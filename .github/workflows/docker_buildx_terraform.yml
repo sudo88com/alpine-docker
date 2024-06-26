@@ -50,7 +50,7 @@ jobs:
           cache-to: type=gha,mode=max
           push: true
           tags: |
-            ghcr.io/${{ github.repository }}/terraform:${{ env.PACKER_VERSION }}-alpine${{ env.ALPINE_VERSION }}
-            ghcr.io/${{ github.repository }}/terraform:${{ env.PACKER_VERSION }}
+            ghcr.io/${{ github.repository }}/terraform:${{ env.TERRAFORM_VERSION }}-alpine${{ env.ALPINE_VERSION }}
+            ghcr.io/${{ github.repository }}/terraform:${{ env.TERRAFORM_VERSION }}
             ghcr.io/${{ github.repository }}/terraform:alpine${{ env.ALPINE_VERSION }}
             ghcr.io/${{ github.repository }}/terraform:latest
