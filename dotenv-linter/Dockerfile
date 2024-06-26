@@ -6,13 +6,13 @@ ARG ALPINE_VERSION=3.20.1
 FROM alpine:${ALPINE_VERSION} AS base
 
 # renovate: datasource=pypi depName=dotenv-linter
-ARG DOTENV_LINTER_VERSION=0.5.0
+ARG DOTENV-LINTER_VERSION=0.5.0
 
 RUN apk add --no-cache python3 py3-pip
 
 RUN python3 -m venv /venv \
     && . /venv/bin/activate \
-    && pip install --no-cache-dir dotenv-linter==${DOTENV_LINTER_VERSION}
+    && pip install --no-cache-dir dotenv-linter==${DOTENV-LINTER_VERSION}
 
 FROM alpine:${ALPINE_VERSION} AS final
 
