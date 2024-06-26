@@ -1,8 +1,10 @@
 # sudo88com/alpine-docker
 
 [![Ansible Docker Build](https://github.com/sudo88com/alpine-docker/actions/workflows/docker_buildx_ansible.yml/badge.svg)](https://github.com/sudo88com/alpine-docker/actions/workflows/docker_buildx_ansible.yml)
+[![Dotenv_linter Docker Build](https://github.com/sudo88com/alpine-docker/actions/workflows/docker_buildx_dotenv_linter.yml/badge.svg)](https://github.com/sudo88com/alpine-docker/actions/workflows/docker_buildx_dotenv_linter.yml)
 [![Packer Docker Build](https://github.com/sudo88com/alpine-docker/actions/workflows/docker_buildx_packer.yml/badge.svg)](https://github.com/sudo88com/alpine-docker/actions/workflows/docker_buildx_packer.yml)
-[![Packer Docker Build](https://github.com/sudo88com/alpine-docker/actions/workflows/docker_buildx_packer.yml/badge.svg)](https://github.com/sudo88com/alpine-docker/actions/workflows/docker_buildx_packer.yml)
+[![Terraform Docker Build](https://github.com/sudo88com/alpine-docker/actions/workflows/docker_buildx_terraform.yml/badge.svg)](https://github.com/sudo88com/alpine-docker/actions/workflows/docker_buildx_terraform.yml)
+[![Yamllint Docker Build](https://github.com/sudo88com/alpine-docker/actions/workflows/docker_buildx_yamllint.yml/badge.svg)](https://github.com/sudo88com/alpine-docker/actions/workflows/docker_buildx_yamllint.yml)
 
 This repository contains Dockerfiles for building Alpine-based Docker images for various tools. It is organized into directories, each with its own Dockerfile.
 
