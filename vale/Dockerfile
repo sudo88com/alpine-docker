@@ -8,7 +8,7 @@ FROM alpine:${ALPINE_VERSION} AS base
 FROM base AS build
 
 # renovate: datasource=github-releases depName=errata-ai/vale
-ARG VALE_VERSION=v3.5.0
+ARG VALE_VERSION=v3.6.0
 
 # Set up architecture-specific variables
 RUN ARCH=$(uname -m) && \
