@@ -50,7 +50,7 @@ RUN chmod +x /usr/local/bin/*
 FROM base as final
 
 # Install AWS CLI
-RUN apk add --no-cache aws-cli \
+RUN apk add --no-cache bash aws-cli \
     && ln -s $(which aws) /bin/aws-cli
 
 # Copy binaries from build stage to final image

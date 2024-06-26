@@ -16,7 +16,7 @@ RUN python3 -m venv /venv \
 
 FROM alpine:${ALPINE_VERSION} AS final
 
-RUN apk add --no-cache python3
+RUN apk add --no-cache bash python3
 
 # Copy the virtual environment from the build stage
 COPY --from=base /venv /venv
@@ -32,3 +32,5 @@ RUN mkdir -p /var/cache/apk \
     && rm -rf /var/cache/apk/*
 
 USER root
+
+ENTRYPOINT ["bash", "-c"]

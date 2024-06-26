@@ -33,7 +33,7 @@ RUN chmod +x /usr/local/bin/vale
 FROM base AS final
 
 # Install required libraries
-RUN apk add --no-cache libc6-compat libstdc++ libgcc libressl
+RUN apk add --no-cache bash libc6-compat libstdc++ libgcc libressl
 
 COPY --from=build /usr/local/bin/vale /usr/local/bin
 
