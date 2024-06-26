@@ -1,11 +1,11 @@
-name: Vale Docker Build
+name: Md-Lint Docker Build
 
 on:
   push:
     branches:
       - main
     paths:
-      - 'vale/**'
+      - 'md-lint/**'
   workflow_dispatch:
 
 jobs:
@@ -29,7 +29,7 @@ jobs:
       - name: Extract version from Dockerfile
         id: extract_version
         run: |
-          cd vale
+          cd md-lint
           ALPINE_VERSION=$(grep -oP '^ARG ALPINE_VERSION=\K.*' Dockerfile)
           echo "ALPINE_VERSION=${ALPINE_VERSION}" >> $GITHUB_ENV
           echo "ALPINE_VERSION=${ALPINE_VERSION}"
@@ -39,12 +39,12 @@ jobs:
 
       - name: Build and push Docker image
         run: |
-          cd vale
+          cd md-lint
           docker buildx build \
             --platform linux/amd64,linux/arm64 \
-            --tag ghcr.io/${{ github.repository }}/vale:${{ env.VALE_VERSION }}-alpine${{ env.ALPINE_VERSION }} \
-            --tag ghcr.io/${{ github.repository }}/vale:${{ env.VALE_VERSION }} \
-            --tag ghcr.io/${{ github.repository }}/vale:alpine${{ env.ALPINE_VERSION }} \
-            --tag ghcr.io/${{ github.repository }}/vale:latest \
+            --tag ghcr.io/${{ github.repository }}/md-lint:${{ env.VALE_VERSION }}-alpine${{ env.ALPINE_VERSION }} \
+            --tag ghcr.io/${{ github.repository }}/md-lint:${{ env.VALE_VERSION }} \
+            --tag ghcr.io/${{ github.repository }}/md-lint:alpine${{ env.ALPINE_VERSION }} \
+            --tag ghcr.io/${{ github.repository }}/md-lint:latest \
             --push \
             .
