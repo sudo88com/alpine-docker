@@ -5,7 +5,7 @@ ARG ALPINE_VERSION=3.20.1
 
 FROM alpine:${ALPINE_VERSION} AS base
 
-# renovate: datasource=pypi depName=yamllint
+# renovate: datasource=pypi depName=dotenv-linter
 ARG DOTENV_LINTER_VERSION=0.5.0
 
 RUN apk add --no-cache python3 py3-pip
