@@ -45,6 +45,8 @@ COPY --from=build /venv /venv
 # Ensure the virtual environment is activated
 ENV PATH="/venv/bin:$PATH"
 
+RUN ansible --version
+
 # Clear and enable Alpine caching
 RUN mkdir -p /var/cache/apk \
     && ln -s /var/cache/apk /etc/apk/cache \
