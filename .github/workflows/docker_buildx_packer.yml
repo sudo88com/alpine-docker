@@ -1,4 +1,4 @@
-name: Packer Docker Build
+name: Docker Build- packer
 
 on:
   push:
@@ -9,12 +9,15 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-and-push-image:
+  docker:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
@@ -37,14 +40,17 @@ jobs:
           echo "PACKER_VERSION=${PACKER_VERSION}" >> $GITHUB_ENV
           echo "PACKER_VERSION=${PACKER_VERSION}"
 
-      - name: Build and push Docker image
-        run: |
-          cd packer
-          docker buildx build \
-            --platform linux/amd64,linux/arm64 \
-            --tag ghcr.io/${{ github.repository }}/packer:${{ env.PACKER_VERSION }}-alpine${{ env.ALPINE_VERSION }} \
-            --tag ghcr.io/${{ github.repository }}/packer:${{ env.PACKER_VERSION }} \
-            --tag ghcr.io/${{ github.repository }}/packer:alpine${{ env.ALPINE_VERSION }} \
-            --tag ghcr.io/${{ github.repository }}/packer:latest \
-            --push \
-            .
+      - name: Build and push
+        uses: docker/build-push-action@v6
+        with:
+          context: packer
+          file: packer/Dockerfile
+          platforms: linux/amd64,linux/arm64
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          push: true
+          tags: |
+            ghcr.io/${{ github.repository }}/packer:${{ env.PACKER_VERSION }}-alpine${{ env.ALPINE_VERSION }}
+            ghcr.io/${{ github.repository }}/packer:${{ env.PACKER_VERSION }}
+            ghcr.io/${{ github.repository }}/packer:alpine${{ env.ALPINE_VERSION }}
+            ghcr.io/${{ github.repository }}/packer:latest
