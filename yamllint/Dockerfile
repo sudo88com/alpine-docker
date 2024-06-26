@@ -6,7 +6,7 @@ ARG ALPINE_VERSION=3.20.1
 FROM alpine:${ALPINE_VERSION} AS base
 
 # renovate: datasource=pypi depName=yamllint
-ARG YAMLLINT_VERSION=1.34.0
+ARG YAMLLINT_VERSION=1.35.1
 
 RUN apk add --no-cache python3 py3-pip
 
