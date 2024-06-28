@@ -54,3 +54,9 @@ jobs:
             ghcr.io/${{ github.repository }}/terraform:${{ env.TERRAFORM_VERSION }}
             ghcr.io/${{ github.repository }}/terraform:alpine${{ env.ALPINE_VERSION }}
             ghcr.io/${{ github.repository }}/terraform:latest
+
+      - name: Run Slack Notification
+        if: always()
+        uses: sudo88com/slacknotify-action@v1
+        with:
+          webhook_url: ${{ secrets.SLACK_WEBHOOK_URL }}
